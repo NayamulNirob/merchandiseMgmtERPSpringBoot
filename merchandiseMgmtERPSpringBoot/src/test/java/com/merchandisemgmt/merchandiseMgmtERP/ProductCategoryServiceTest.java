@@ -10,16 +10,16 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.util.AssertionErrors;
+import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.web.multipart.MultipartFile;
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.IOException;
-
+@TestPropertySource("classpath:test.properties")
 public class ProductCategoryServiceTest {
-
-
 
 
         @Mock
@@ -31,13 +31,14 @@ public class ProductCategoryServiceTest {
         @BeforeEach
         public void setup() {
             MockitoAnnotations.openMocks(this); // Initialize mocks
-        }
+            ReflectionTestUtils.setField(productCategoryService, "uploadDir", "test-uploads/");
+           }
 
         @Test
         public void testSaveCategoryWithImage() throws IOException {
             // Arrange
             ProductCategory category = new ProductCategory();
-            category.setName("Electronics");
+            category.setName("name");
 
             // Mock image file
             MockMultipartFile imageFile = new MockMultipartFile(
@@ -55,7 +56,9 @@ public class ProductCategoryServiceTest {
 
             // Assert
             assertNotNull(savedCategory);
-            assertEquals("image.jpg", savedCategory.getImage());
+            assertNotNull(savedCategory.getImage());
+//            assertEquals("image.jpg", savedCategory.getImage());
+            assertTrue(savedCategory.getImage().endsWith("image.jpg"));
             verify(productCategoryRepository, times(1)).save(any(ProductCategory.class));
         }
 

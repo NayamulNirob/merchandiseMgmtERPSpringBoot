@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-
 public class ProductCategoryService {
     @Autowired
     private ProductCategoryRepository productCategoryRepository;
@@ -40,7 +39,12 @@ public class ProductCategoryService {
 
 
 
-    private String saveImage(MultipartFile file) throws IOException {
+    public String saveImage(MultipartFile file) throws IOException {
+
+        if (uploadDir == null || uploadDir.isEmpty()) {
+            throw new IllegalStateException("Upload directory is not set.");
+        }
+
         Path uploadPath = Paths.get(uploadDir);
 
         if (!Files.exists(uploadPath)) {
