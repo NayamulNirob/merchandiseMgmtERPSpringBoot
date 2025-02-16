@@ -138,6 +138,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>mms_erp_app</finalName>
 	</build>
 
 </project>

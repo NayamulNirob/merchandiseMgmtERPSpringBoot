@@ -1,0 +1,17 @@
+DB instance identifier: merchandisedb
+
+Master username : admin
+
+Master password: password2020
+
+Initial database name: merchandisedb
+
+port:3306
+
+
+Endpoint/url:   merchandisedb.c1e4kscqaqes.us-east-1.rds.amazonaws.com
+
+Instance Name: mms_instance
+
+
+Public IPv4 DNS: ec2-98-81-249-14.compute-1.amazonaws.com
