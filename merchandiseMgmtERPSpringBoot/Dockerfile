@@ -1,10 +1,8 @@
-FROM maven:3-eclipse-temurin-21 AS build
-WORKDIR /app
+FROM maven:3-eclipse-temurin-17 AS build
 COPY . .
 RUN mvn clean package -DskipTests
 
-FROM eclipse-temurin:21-alpine
-WORKDIR /app
-COPY --from=build /app/target/merchandiseMgmtERP.jar app.jar
+FROM eclipse-temurin:17-alpine
+COPY --from=build /target/*.jar merchandiseMgmtERP.jar
 EXPOSE 8089
-CMD ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java","-jar","merchandiseMgmtERP.jar"]
