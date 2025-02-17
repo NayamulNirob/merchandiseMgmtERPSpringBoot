@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: merchandiseMgmtERP
+    runtime: docker
+    repo: https://github.com/NayamulNirob/merchandiseMgmtERPSpringBoot
+    branch: main
+    dockerContext: .
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: DATABASE_HOST
+        value: "mysql-b925dd8-nayamulislam-26a4.h.aivencloud.com"
+      - key: DATABASE_PORT
+        value: "18170"
+      - key: DATABASE_NAME
+        value: "defaultdb"
+      - key: DATABASE_USER
+        value: "avnadmin"
+      - key: DATABASE_PASSWORD
+        value: "AVNS_4NAy8rggP8BMdkIC2aW"
+      - key: PORT
+        value: "8089"
+    plan: free
+
