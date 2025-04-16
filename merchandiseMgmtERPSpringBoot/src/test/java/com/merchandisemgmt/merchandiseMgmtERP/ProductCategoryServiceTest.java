@@ -1,23 +1,28 @@
 package com.merchandisemgmt.merchandiseMgmtERP;
 
-import com.merchandisemgmt.merchandiseMgmtERP.entity.ProductCategory;
-import com.merchandisemgmt.merchandiseMgmtERP.repository.ProductCategoryRepository;
-import com.merchandisemgmt.merchandiseMgmtERP.service.ProductCategoryService;
+import java.io.IOException;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.mockito.ArgumentMatchers.any;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.util.AssertionErrors;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.web.multipart.MultipartFile;
-import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.IOException;
+import com.merchandisemgmt.merchandiseMgmtERP.entity.ProductCategory;
+import com.merchandisemgmt.merchandiseMgmtERP.repository.ProductCategoryRepository;
+import com.merchandisemgmt.merchandiseMgmtERP.service.ProductCategoryService;
 @TestPropertySource("classpath:test.properties")
 public class ProductCategoryServiceTest {
 
